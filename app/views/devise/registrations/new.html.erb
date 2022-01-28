@@ -1,0 +1,35 @@
+<div class="contents row">
+  <div class="container">
+    <h2 class="sign-up">会員登録フォーム</h2>
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <%= devise_error_messages! %>
+      
+      <div class="field">
+        <%= f.label :name, class: "nickname-a" %> <em class="nickname-c">(6文字まで)</em><br />
+        <%= f.text_field :nickname, autofocus: true, maxlength: "6", class: "nickname-b" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, class: "email-a" %><br />
+        <%= f.email_field :email, class: "email-b" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "password-x" %>
+        <% if @minimum_password_length %>
+          <em class="password-z">(<%= @minimum_password_length %>文字まで)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "password-b" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "password-c" %><em class="password-f">(確認)</em><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "password-d" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "登録完了", class: "f_submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="contents row">
+  <div class="container">
+    <h2 class="login">会員認証（ログイン）</h2>
+    <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <div class="field-a">
+        <%= f.label :email, class: "email-a" %><br />
+        <%= f.email_field :email, autofocus: true, class: "email-b" %>
+      </div>
+
+      <div class="field-b">
+        <%= f.label :password, class: "password-a" %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "password-b" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field-c">
+          <%= f.label :remember_me %><br />
+          <%= f.check_box :remember_me, class: "check-box" %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: "f-submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

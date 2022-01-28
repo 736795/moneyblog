@@ -9,19 +9,32 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="body">
     <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">PicTweet</a></h1>
-        <div class="user_nav grid-6">
-          <a class="post" href="/tweets/new">投稿する</a>
-        </div>
+        <h1 class="aaa">SAVINGS NAVI</h1>
+        <% if user_signed_in? %>
+          <div class="ccc">
+          <div class="user-name"><%= current_user.nickname %></div>
+            <ul class="user_a">
+                <%= link_to "マイページ", "/users/#{current_user.id}", class: "user_b" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "user_c" %>
+            </ul>
+          
+            <%= link_to "投稿する", new_tweet_path, class: "post-c" %>
+          </div>
+        <% else %>
+          <div class="bbb">
+            <%= link_to "ログイン", new_user_session_path, class: "post-a" %>
+            <%= link_to "会員登録", new_user_registration_path, class: "post-b" %>
+          </div>
+        <% end %>
       </div>
     </header>
     <%= yield %>
     <footer>
-      <p>
-        Copyright PicTweet 2019.
+      <p class="footer">
+        Copyright MoneyBlog 2021.
       </p>
     </footer>
   </body>

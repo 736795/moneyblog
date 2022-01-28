@@ -1,0 +1,17 @@
+<div class="image-aaa" style="background-image: url(<%= tweet.image %>);">
+    <div class="more">
+        <ul class="more_lists">
+            <%= link_to '詳細', tweet_path(tweet.id), method: :get, class: "more_a" %>
+          <% if user_signed_in? && current_user.id == tweet.user_id %>
+            <%= link_to '編集', edit_tweet_path(tweet.id), method: :get, class: "more_b" %>
+            <%= link_to '削除', tweet_path(tweet.id), method: :delete, data: {confirm: "削除しますか？"}, class: "more_c" %>
+          <% end %>
+        </ul>
+    </div>
+      <p class="text_a"><%= tweet.text %></p>
+      <span class="name_a">
+        <a href="/users/<%= tweet.user.id %>" class="name_b">
+          <span></span><%= tweet.user.nickname %>
+        </a>
+      </span>
+</div>
